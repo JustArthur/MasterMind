@@ -11,7 +11,7 @@ let combinaisonCouleurs = [];
 let ligneCouleur = [];
 
 function getDifficulte(difficulte) {
-    // const plateau = document.getElementById('plateau');
+    const plateau = document.getElementById('plateau');
 
     switch(difficulte) {
         case 'bleusaille':
@@ -37,12 +37,11 @@ function getDifficulte(difficulte) {
 
     console.log(difficulte)
 
-    for(var i = 0; i < nbrLigne; i++) {
+    for(var i = 1; i <= nbrLigne; i++) {
         plateau.insertAdjacentHTML('afterbegin', '<div class="ligne-couleur"><div class="boite-couleur"></div><div class="boite-couleur"></div><div class="boite-couleur"></div><div class="boite-couleur"></div></div>')
     }
-
-    
 }
+
 
 //Une boucle pour les quatres couleurs défini
 for(let i = 0; i < 4; i++) {

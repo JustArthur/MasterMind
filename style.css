@@ -43,7 +43,11 @@ ul {
 }
 
 li {
-    padding: 10px;
+    display: flex;
+    width: 200px;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
     color: #FFFFFF;
     border-radius: 5px;
     cursor: pointer;
@@ -54,6 +58,7 @@ li:nth-child(2) { background-color: #f6b104; }
 li:nth-child(3) { background-color: #ff0000; }
 li:nth-child(4) { background-color: #9a1500; }
 li:nth-child(5) { background-color: #2f0000; }
+li:nth-child(6) { background-color: #0084ff; }
 
 li:last-child {
     margin-top: 40px;
