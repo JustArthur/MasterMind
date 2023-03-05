@@ -11,16 +11,17 @@
 }
 
 body {
-    height: 100vh;
+    height: max-content;
     width: 100%;
     display: flex;
 }
 
 /* Plateau de jeu */
 .jeu {
-    margin: auto;
+    margin: 10px auto;
     padding: 10px;
     width: 300px;
+    height: max-content;
     background-color: #4a4a4a;
     border-radius: 10px;
     display: flex;
