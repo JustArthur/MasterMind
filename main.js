@@ -11,35 +11,8 @@ let combinaisonCouleurs = [];
 let ligneCouleur = [];
 
 function getDifficulte(difficulte) {
-    const plateau = document.getElementById('plateau');
-
-    switch(difficulte) {
-        case 'bleusaille':
-            nbrLigne = 10;
-            break;
-
-        case 'violence':
-            nbrLigne = 8;
-            break;
-
-        case 'ultraViolence':
-            nbrLigne = 6;
-            break;
-
-        case 'cauchemar':
-            nbrLigne = 3;
-            break;
-
-        case 'ultraCauchemar':
-            nbrLigne = 1;
-            break;
-    }
-
-    console.log(difficulte)
-
-    for(var i = 1; i <= nbrLigne; i++) {
-        plateau.insertAdjacentHTML('afterbegin', '<div class="ligne-couleur"><div class="boite-couleur"></div><div class="boite-couleur"></div><div class="boite-couleur"></div><div class="boite-couleur"></div></div>')
-    }
+    localStorage.setItem('laDifficulteChoisie', difficulte)
+    window.location.href = "jeu.html"
 }
 
 
@@ -86,6 +59,7 @@ function clickBtn(couleur) {
     } else if(numColumn == 4) {
         if(JSON.stringify(combinaisonCouleurs) === JSON.stringify(ligneCouleur)) {
             window.alert('Bravo, vous avez gagné !')
+            location.reload()
 
         } else {
             numColumn = 0;
@@ -93,3 +67,5 @@ function clickBtn(couleur) {
         }    
     }
 }
+
+console.log(combinaisonCouleurs)
