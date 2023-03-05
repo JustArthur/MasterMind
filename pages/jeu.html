@@ -5,11 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../css/game.css">
 
     <title>Mastermind</title>
 </head>
 <body>
+
+    <div class="btn-back" onclick="retourMenu()">Retour à l'écran de titre</div>
+
     <div class="jeu" id="plateau">
 
         <!-- Ligne du jeu ajouté ici avec JS -->
@@ -21,8 +24,10 @@
             <div class="boite-couleur-user" onclick="clickBtn('yellow')"></div>
         </div>
     </div>
+
+    <div class="copy">&copy Arthur BOURST 2023</div>
     
-    <script src="main.js"></script>
-    <script src="diffculte.js"></script>
+    <script src="../script/chooseDifficulte.js"></script>
+    <script src="../script/game.js"></script>
 </body>
 </html>

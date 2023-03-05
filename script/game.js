@@ -4,63 +4,76 @@ let ordreCouleur = 0;
 //Pour voir sur quelle colonne on se trouve
 let numColumn = 0;
 
-//Tableau des couleurs à trouvé
+//Tableau des couleurs à trouvé (Reponse permet de mettre els couleurs en français avec le switch)
 let combinaisonCouleurs = [];
+let combinaisonCouleursReponse = [];
 
 //Tableau des couleurs que l'utilisateurs à saisi sur une ligne
 let ligneCouleur = [];
 
-function getDifficulte(difficulte) {
-    localStorage.setItem('laDifficulteChoisie', difficulte)
-    window.location.href = "jeu.html"
-}
-
+//Variable pour la popup d'alert
+let message = ''
 
 //Une boucle pour les quatres couleurs défini
 for(let i = 0; i < 4; i++) {
-    
     color = Math.floor(Math.random() * 4) + 1;
-    
+   
+    //Celon le chiffre X choisi il défini une couleur
     switch(color) {
         case 1:
             colorText = 'blue';
+            colorReponse = 'Bleu';
             break;
             
         case 2:
             colorText = 'red';
+            colorReponse = 'Rouge';
             break;
         
         case 3:
             colorText = 'yellow';
+            colorReponse = 'Jaune';
             break;
             
         case 4:
             colorText = 'green';
+            colorReponse = 'Vert';
             break;
     }
     
+
     combinaisonCouleurs.push(colorText);
+    combinaisonCouleursReponse.push(colorReponse);
 }
 
+//Quand un btn de couleur est cliqué il l'a rajoute à la ligne
 function clickBtn(couleur) {
     const boiteCouleur = document.getElementsByClassName('boite-couleur');
     var nbrCase = boiteCouleur.length;
 
+    //Rajoute la couleur celon le btn couleur cliquer
     boiteCouleur[ordreCouleur].style.backgroundColor = couleur;
+
+    //Rajoute la couleur ajouter par l'utilisateur dans un tableau
     ligneCouleur.push(couleur);
 
+    //Auto-increment pour les lignes
     ordreCouleur++
     numColumn++
 
+    //Si il n'y a plus de possibilté de ligne alors il pert
     if(ordreCouleur == nbrCase) {
-        window.alert('Nul, vous avez perdu ! La réponse était ' + combinaisonCouleurs)
-        location.reload()
+        window.alert('Vous avez perdu ! La réponse était ' + combinaisonCouleursReponse)
+        window.location.href = "../index.html"
 
+    //Sinon si une ligne est rempli
     } else if(numColumn == 4) {
+        //Il vérifie si les tableaux sont égaux
         if(JSON.stringify(combinaisonCouleurs) === JSON.stringify(ligneCouleur)) {
             window.alert('Bravo, vous avez gagné !')
-            location.reload()
+            window.location.href = "../index.html"
 
+        //sinon il remet à zero
         } else {
             numColumn = 0;
             ligneCouleur.splice(ligneCouleur);
@@ -68,4 +81,10 @@ function clickBtn(couleur) {
     }
 }
 
-console.log(combinaisonCouleurs)
+//Retour au menu home et vide la difficulté
+function retourMenu() {
+    let difficulte = ''
+    localStorage.setItem('laDifficulteChoisie', difficulte)
+
+    window.location.href = "../index.html"
+}

@@ -4,7 +4,6 @@ function nbrLigneDifficulte() {
     const plateau = document.getElementById('plateau');
 
     let difficulte = localStorage.getItem('laDifficulteChoisie')
-    console.log(difficulte)
 
     switch(difficulte) {
         case 'bleusaille':

@@ -16,56 +16,7 @@ body {
     display: flex;
 }
 
-/* Page index */
-.main {
-    margin: auto;
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-
-h1 {
-    font-size: 90px;
-}
-
-p {
-    font-size: 20px;
-    margin-top: 50px;
-}
-
-ul {
-    margin-top: 20px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: 10px;
-}
-
-li {
-    display: flex;
-    width: 200px;
-    height: 50px;
-    justify-content: center;
-    align-items: center;
-    color: #FFFFFF;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-li:nth-child(1) { background-color: #008f1a; }
-li:nth-child(2) { background-color: #f6b104; }
-li:nth-child(3) { background-color: #ff0000; }
-li:nth-child(4) { background-color: #9a1500; }
-li:nth-child(5) { background-color: #2f0000; }
-li:nth-child(6) { background-color: #0084ff; }
-
-li:last-child {
-    margin-top: 40px;
-}
-
-
-/* Page du jeu */
+/* Plateau de jeu */
 .jeu {
     margin: auto;
     padding: 10px;
@@ -77,7 +28,7 @@ li:last-child {
 }
 
 .ligne-couleur {
-    margin: 20px auto;
+    margin: 15px auto;
     width: 90%;
     display: flex;
     border-radius: 40px;
@@ -114,7 +65,25 @@ li:last-child {
 .user .boite-couleur-user:nth-child(2){ background-color: red; }
 .user .boite-couleur-user:nth-child(3) { background-color: green; }
 .user .boite-couleur-user:nth-child(4) { background-color: yellow; }
-.user .boite-couleur-user:nth-child(5) { background-color: black; }
-.user .boite-couleur-user:nth-child(6) { background-color: purple; }
-.user .boite-couleur-user:nth-child(7) { background-color: white; }
-.user .boite-couleur-user:nth-child(8) { background-color: indianred; }
+
+.btn-back {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    width: 200px;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    color: #FFFFFF;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #0084ff;
+}
+
+.copy {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color: #b8b8b8;
+}
