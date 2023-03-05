@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+
+    <title>Mastermind</title>
+</head>
+<body>
+
+    <!-- <div class="main">
+        <h1 class="title-game">Mastermind</h1>
+        <p class="difficulte">Choix de la difficulté</p>
+        <ul class="list">
+            <li class="list-item" onclick="difficulte('bleusaille')">Bleusaille</li>
+            <li class="list-item" onclick="difficulte('violence')">Violence</li>
+            <li class="list-item" onclick="difficulte('ultraViolance')">Ultra-violence</li>
+            <li class="list-item" onclick="difficulte('cauchemar')">Cauchemar</li>
+            <li class="list-item" onclick="difficulte('ultraCauchemar')">Ultra-cauchemar</li>
+            <li class="list-item">Règle du jeu</li>
+        </ul>
+    </div> -->
+    
+    <div class="jeu" id="plateau">
+
+        <!-- Ligne du jeu ajouté ici avec JS -->
+
+        <div class="ligne-couleur user">
+            <div class="boite-couleur-user" onclick="clickBtn('blue')"></div>
+            <div class="boite-couleur-user" onclick="clickBtn('red')"></div>
+            <div class="boite-couleur-user" onclick="clickBtn('green')"></div>
+            <div class="boite-couleur-user" onclick="clickBtn('yellow')"></div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
