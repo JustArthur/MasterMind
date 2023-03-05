@@ -1,1 +1,1 @@
-//Page pour tableau des scores
+//-- Page pour tableau des scores ------------

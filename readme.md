@@ -1,0 +1,1 @@
+Utilisation de l'extension 'Live Server' sur Visual Studio Code si jamais le code ne fonctionne pas en local.

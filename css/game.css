@@ -67,7 +67,7 @@ body {
 .user .boite-couleur-user:nth-child(4) { background-color: yellow; }
 
 .btn-back {
-    position: absolute;
+    position: fixed;
     top: 10px;
     left: 10px;
     display: flex;
@@ -82,7 +82,7 @@ body {
 }
 
 .copy {
-    position: absolute;
+    position: fixed;
     bottom: 10px;
     right: 10px;
     color: #b8b8b8;
