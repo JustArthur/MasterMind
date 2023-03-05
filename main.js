@@ -1,5 +1,3 @@
-window.onload = difficulte();
-
 //Pour ajouter la couleur à la case suivante
 let ordreCouleur = 0;
 
@@ -12,10 +10,8 @@ let combinaisonCouleurs = [];
 //Tableau des couleurs que l'utilisateurs à saisi sur une ligne
 let ligneCouleur = [];
 
-function difficulte() {
-    const plateau = document.getElementById('plateau');
-
-    difficulte = 'ultraCauchemar'
+function getDifficulte(difficulte) {
+    // const plateau = document.getElementById('plateau');
 
     switch(difficulte) {
         case 'bleusaille':
@@ -39,9 +35,9 @@ function difficulte() {
             break;
     }
 
-    for(var i = 0; i < nbrLigne; i++) {
-        console.log(i)
+    console.log(difficulte)
 
+    for(var i = 0; i < nbrLigne; i++) {
         plateau.insertAdjacentHTML('afterbegin', '<div class="ligne-couleur"><div class="boite-couleur"></div><div class="boite-couleur"></div><div class="boite-couleur"></div><div class="boite-couleur"></div></div>')
     }
 
