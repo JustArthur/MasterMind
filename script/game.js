@@ -80,10 +80,26 @@ function clickBtn(couleur) {
             window.alert('Bravo, vous avez gagné !')
             window.location.href = "../index.html"
 
-        //-- sinon il remet à zero ------------
+        //-- Sinon il remet à zero ------------
         } else {
             numColumn = 0;
             ligneCouleur.splice(ligneCouleur);
         }    
     }
+
+    let memeEmplacement = [];
+    let autreEmplacement = [];
+
+    //-- Vérifier si les tableaux contiennent les mêmes éléments dans la même position ------------
+    for (let i = 0; i < combinaisonCouleurs.length; i++) {
+        if (combinaisonCouleurs[i] === ligneCouleur[i]) {  
+            memeEmplacement.push(combinaisonCouleurs[i]);
+
+        } else if (combinaisonCouleurs.indexOf(ligneCouleur[i]) !== -1) {
+            autreEmplacement.push(ligneCouleur[i]);
+        }
+    }
+
+    console.log(`Les couleurs suivantes sont présentes dans le même emplacement : ${memeEmplacement.join(', ')}.`);
+    console.log(`Les couleurs suivantes sont présentes mais pas dans le bon emplacement : ${autreEmplacement.join(', ')}.`);
 }
