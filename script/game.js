@@ -14,10 +14,6 @@ let numColumn = 0;
 let combinaisonCouleurs = [];
 let combinaisonCouleursReponse = [];
 
-//-- Tableau comparateur pour voir si oui ou non les couleurs sont au bon endroit ou un endroit différent ------------
-let memeEmplacement = [];
-let autreEmplacement = [];
-
 //-- Tableau des couleurs que l'utilisateurs à saisi sur une ligne ------------
 let ligneCouleur = [];
 
@@ -85,6 +81,10 @@ function clickBtn(couleur) {
 
         //-- Sinon il remet à zero ------------
         } else {
+
+            //-- Tableau comparateur pour voir si oui ou non les couleurs sont au bon endroit ou un endroit différent ------------
+            let memeEmplacement = [];
+            let autreEmplacement = [];
 
             //-- Vérifier si les tableaux contiennent les mêmes éléments dans la même position ------------
             for (let i = 0; i < combinaisonCouleurs.length; i++) {
