@@ -16,13 +16,40 @@
         <p class="difficulte">Choix de la difficulté</p>
 
         <ul class="list">
+
+          <!-- Bouton de diffuclté -->
             <li class="list-item" onclick="getDifficulte('bleusaille')">Bleusaille</li>
             <li class="list-item" onclick="getDifficulte('violence')">Violence</li>
             <li class="list-item" onclick="getDifficulte('ultraViolence')">Ultra-violence</li>
             <li class="list-item" onclick="getDifficulte('cauchemar')">Cauchemar</li>
             <li class="list-item" onclick="getDifficulte('ultraCauchemar')">Ultra-cauchemar</li>
+
+            <!-- Bouton pour la page tableau de score -->
             <li class="list-item" onclick="redirectionPage('score')">Tableau des scores</li>
-            <li class="list-item" onclick="redirectionPage('rules')">Règles du jeu</li>
+
+            <!-- Popup des règles du jeu -->
+            <li class="page">
+                <div class="page__container">
+                  <a href="#popup-rules" class="open-popup">Règles du jeu</a>
+                </div>
+              </li>
+              <div id="popup-rules" class="popup">
+                <div class="popup__container">
+                  <a href="#" class="popup__close">
+                    <span class="screen-reader">Fermer</span>
+                  </a>  
+                  <div class="popup__content">
+                    <h1 class="popup__title r-title">Les règles du jeu Mastermind</h1>
+
+                    <h3 class="popup__title r-title">Le déroulement de la partie</h3>
+                    <p>L'ordinateur choisi entre 4 couleurs une combinaison (Des doublons peuvent exister), le joueur (vous) à pour but de trouver cette combinaison secrète dans les coups possibles.</p>
+                    <p>A chaque fin d'une ligne on vous signalera combien de couleurs sont bien placé ou existant mais mal placé par rapport à la combinaison secrète.</p>
+
+                    <h3 class="popup__title r-title">Les diffcultés</h3>
+                    <p>Les difficultés sont divisé en 5 niveaux, en passant par la plus facile (Bleusaille) a la plus difficile (Ultra-cauchemar), le niveau de difficulté choisi joue selon le nombre de ligne disponible, 10 pour la plus facile et 1 pour la plus difficile.</p>
+                  </div>
+                </div>
+              </div>
         </ul>
     </div>
 

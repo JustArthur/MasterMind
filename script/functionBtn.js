@@ -9,15 +9,11 @@ function getDifficulte(difficulte) {
 
 //-- Redirige vers une page ------------
 function redirectionPage(page) {
-    //-- Re-défini la variable à vide ------------
+    //-- Re-défini la variable à vide (au-cas où on voudrais ne pas remettre une difficulté en passant par une autre page en plein jeu) ------------
     localStorage.setItem('laDifficulteChoisie', '')
 
     //-- Redirige selon le bouton cliqué ------------
     switch(page) {
-        case 'rules':
-            window.location.href = "pages/rules.html"
-            break;
-
         case 'score':
             window.location.href = "pages/score.html"
             break;
