@@ -87,11 +87,3 @@ function clickBtn(couleur) {
         }    
     }
 }
-
-//-- Retour au menu home et vide la difficulté ------------
-function retourMenu() {
-
-    //-- Re-défini la variable à vide ------------
-    localStorage.setItem('laDifficulteChoisie', '')
-    window.location.href = "../index.html"
-}
