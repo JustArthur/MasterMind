@@ -11,15 +11,15 @@
 }
 
 body {
-    height: max-content;
+    height: 100vh;
     width: 100%;
     display: flex;
 }
 
 /* Plateau de jeu */
 .jeu {
-    margin: 10px auto;
-    padding: 10px;
+    margin: auto;
+    padding: 20px 0px;
     width: 300px;
     height: max-content;
     background-color: #4a4a4a;
@@ -29,7 +29,7 @@ body {
 }
 
 .ligne-couleur {
-    margin: 15px auto;
+    margin: 5px auto;
     width: 90%;
     display: flex;
     border-radius: 40px;
@@ -50,6 +50,7 @@ body {
     border-top: 2px solid black;
     border-radius: 0;
     padding-top: 20px;
+    margin-top: 20px;
 }
 
 .user .boite-couleur-user {
