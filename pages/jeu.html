@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="../css/game.css">
+    <link rel="stylesheet" href="../css/alert.css">
 
     <title>Mastermind</title>
 </head>
@@ -22,6 +23,19 @@
             <div class="boite-couleur-user" onclick="clickBtn('red')"></div>
             <div class="boite-couleur-user" onclick="clickBtn('green')"></div>
             <div class="boite-couleur-user" onclick="clickBtn('yellow')"></div>
+        </div>
+    </div>
+
+    <div class="main-popup" id="main-popup">
+        <div class="popup">
+            <div class="alert">
+                <h1 class="title" id="titre"><!-- Texte ajouter avec JS --></h1>
+        
+                <ul class="btns">
+                    <li class="btn" onclick="getDifficulte(localStorage.getItem('laDifficulteChoisie'))">Rejouer la partie</li>
+                    <li class="btn" onclick="redirectionPage('retour')">Retourner à l'écran de titre</li>
+                </ul>
+            </div>
         </div>
     </div>
 

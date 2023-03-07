@@ -16,6 +16,17 @@ body {
     display: flex;
 }
 
+.main-popup {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    display: none;
+}
+
+.main-popup.active {
+    display: block;
+}
+
 .popup {
     height: 100%;
     width: 100%;

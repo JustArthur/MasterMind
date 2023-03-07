@@ -4,7 +4,7 @@ window.onload = nbrLigneDifficulte()
 function nbrLigneDifficulte() {
     const plateau = document.getElementById('plateau');
 
-    //-- Récupère dans une variable la diiffuclté choisis et stocké dans le storage ------------
+    //-- Récupère dans une variable la difficulté choisi et stocké dans le storage ------------
     let difficulte = localStorage.getItem('laDifficulteChoisie')
 
     //-- Défini le nombre de ligne selon la difficulté choisi ------------

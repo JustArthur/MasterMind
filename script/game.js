@@ -10,12 +10,22 @@ let ordreCouleur = 0;
 //-- Pour voir sur quelle colonne on se trouve ------------
 let numColumn = 0;
 
+//-- Le nombre d'essaie avant de trouver ou perdre pour le tableau des scores ------------
+let nbrEssai = 0;
+
 //-- Tableau des couleurs à trouvé (Reponse permet de mettre els couleurs en français avec le switch) ------------
 let combinaisonCouleurs = [];
 let combinaisonCouleursReponse = [];
 
 //-- Tableau des couleurs que l'utilisateurs à saisi sur une ligne ------------
 let ligneCouleur = [];
+
+//-- Tableau des scores de la partie ------------
+let gameScore = [];
+
+//-- Pour un message de victoire ou de loose ------------
+const popup = document.getElementById('main-popup');
+const titre = document.getElementById('titre');
 
 //-- Une boucle pour les quatres couleurs défini ------------
 for(let i = 0; i < 4; i++) {
@@ -69,20 +79,24 @@ function clickBtn(couleur) {
 
     //-- S'il n'y a plus de possibilté de joué alors il pert ------------
     if(ordreCouleur == nbrCase) {
-        window.alert('Vous avez perdu ! La réponse était ' + combinaisonCouleursReponse)
-        window.location.href = "../index.html"
+        titre.innerHTML = 'Vous avez perdu !';
+        popup.classList.add('active');
 
     //-- Sinon si une ligne est rempli ------------
     } else if(numColumn == 4) {
+        //-- Ajoute un essaie qu'il soit bon ou non ------------
+        nbrEssai++
+
         //-- Il vérifie si les tableaux sont égaux ------------
         if(JSON.stringify(combinaisonCouleurs) === JSON.stringify(ligneCouleur)) {
-            window.alert('Bravo, vous avez gagné !')
-            window.location.href = "../index.html"
+
+            titre.innerHTML = 'Vous avez gagné !';
+            popup.classList.add('active');
 
         //-- Sinon il remet à zero ------------
         } else {
 
-            //-- Tableau comparateur pour voir si oui ou non les couleurs sont au bon endroit ou un endroit différent ------------
+            //-- Tableaux comparateur pour voir si oui ou non les couleurs sont au bon endroit ou un endroit différent ------------
             let memeEmplacement = [];
             let autreEmplacement = [];
 
