@@ -2,7 +2,7 @@
 function getDifficulte(difficulte) {
     localStorage.setItem('laDifficulteChoisie', difficulte)
 
-    if(window.location.pathname == '/') {
+    if(window.location.pathname == '/' || window.location.pathname == '/index.html') {
         window.location.href = "pages/jeu.html"
 
     } else {

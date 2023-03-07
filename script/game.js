@@ -14,7 +14,6 @@ let numColumn = 0;
 let nbrEssai = 0;
 
 //-- Tableau des couleurs à trouvé (Reponse permet de mettre els couleurs en français avec le switch) ------------
-let combinaisonCouleurs = [];
 let combinaisonCouleursReponse = [];
 
 //-- Tableau des couleurs que l'utilisateurs à saisi sur une ligne ------------
@@ -27,37 +26,37 @@ let gameScore = [];
 const popup = document.getElementById('main-popup');
 const titre = document.getElementById('titre');
 
-//-- Une boucle pour les quatres couleurs défini ------------
-for(let i = 0; i < 4; i++) {
-    color = Math.floor(Math.random() * 4) + 1;
-   
-    //-- Celon le chiffre X choisi il défini une couleur ------------
-    switch(color) {
-        case 1:
-            colorText = 'blue';
-            colorReponse = 'Bleu';
-            break;
-            
-        case 2:
-            colorText = 'red';
-            colorReponse = 'Rouge';
-            break;
-        
-        case 3:
-            colorText = 'yellow';
-            colorReponse = 'Jaune';
-            break;
-            
-        case 4:
-            colorText = 'green';
-            colorReponse = 'Vert';
-            break;
-    }
-    
-    // -- Ajoute dans le tableau les couleurs
-    combinaisonCouleurs.push(colorText);
-    combinaisonCouleursReponse.push(colorReponse);
+
+
+//-- Défini des tableaux pour le random de couleur SANS doublons ------------
+let valeurs = [1, 2, 3, 4];
+let combinaisonCouleurs = [];
+
+//-- S'il vois qu'il y a un doublons il continue à faire le for ------------
+for (let i = 0; i < 4; i++) {
+  let index = Math.floor(Math.random() * valeurs.length);
+  combinaisonCouleurs.push(valeurs[index]);
+  valeurs.splice(index, 1);
 }
+
+//-- Change les int en texte pour les couleurs ------------
+for (let i = 0; i < combinaisonCouleurs.length; i++) {
+  switch (combinaisonCouleurs[i]) {
+    case 1:
+        combinaisonCouleurs[i] = 'blue';
+      break;
+    case 2:
+        combinaisonCouleurs[i] = 'red';
+      break;
+    case 3:
+        combinaisonCouleurs[i] = 'yellow';
+      break;
+    case 4:
+        combinaisonCouleurs[i] = 'green';
+      break;
+  }
+}
+
 
 
 
