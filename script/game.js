@@ -78,6 +78,13 @@ function clickBtn(couleur) {
 
     //-- S'il n'y a plus de possibilté de joué alors il pert ------------
     if(ordreCouleur == nbrCase) {
+        //-- Ajoute un essaie qu'il soit bon ou non ------------
+        nbrEssai++
+
+        gameScore = ['User', nbrEssai, localStorage.getItem('laDifficulteChoisie')]
+        localStorage.setItem('scoreGame', gameScore)
+        console.log(localStorage.getItem('scoreGame'))
+
         titre.innerHTML = 'Vous avez perdu !';
         popup.classList.add('active');
 
@@ -88,6 +95,10 @@ function clickBtn(couleur) {
 
         //-- Il vérifie si les tableaux sont égaux ------------
         if(JSON.stringify(combinaisonCouleurs) === JSON.stringify(ligneCouleur)) {
+
+            gameScore = ['User', nbrEssai, localStorage.getItem('laDifficulteChoisie')]
+            localStorage.setItem('scoreGame', gameScore)
+            console.log(localStorage.getItem('scoreGame'))
 
             titre.innerHTML = 'Vous avez gagné !';
             popup.classList.add('active');
