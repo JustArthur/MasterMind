@@ -1,14 +1,7 @@
 //-- Recupére la diffucté celon le btn cliqué et le stoque dans le storage avec localStorage ------------
 function getDifficulte(difficulte) {
     localStorage.setItem('laDifficulteChoisie', difficulte)
-
-    if(window.location.pathname == '/' || window.location.pathname == '/index.html') {
-        window.location.href = "https://justarthur.github.io/MasterMind/pages/jeu.html"
-
-    } else {
-        window.location.href = "https://justarthur.github.io/MasterMind/pages/jeu.html"
-    }
-    
+    window.location.href = "https://justarthur.github.io/MasterMind/pages/jeu.html"    
 }
 
 //-- Redirige vers une page ------------
