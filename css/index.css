@@ -77,6 +77,10 @@ li:nth-child(6) {
     color: #b8b8b8;
 }
 
+.version {
+  margin: 10px 15px;
+}
+
 
 /* Popup règle */
 .r-title{

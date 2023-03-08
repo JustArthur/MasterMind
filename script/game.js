@@ -89,16 +89,26 @@ function clickBtn(couleur) {
     numColumn++
 
     //-- S'il n'y a plus de possibilté de joué alors il pert ------------
-    if(ordreCouleur == nbrCase) {
+    if(ordreCouleur === nbrCase) {
         //-- Ajoute un essaie qu'il soit bon ou non ------------
         nbrEssai++
 
-        gameScore = ['User', nbrEssai, localStorage.getItem('laDifficulteChoisie')]
-        localStorage.setItem('scoreGame', gameScore)
-        console.log(localStorage.getItem('scoreGame'))
+        if(localStorage.getItem('laDifficulteChoisie') === 'ultraCauchemar' && JSON.stringify(combinaisonCouleurs) === JSON.stringify(ligneCouleur)) {
+            gameScore = ['User', nbrEssai, localStorage.getItem('laDifficulteChoisie')]
+            localStorage.setItem('scoreGame', gameScore)
+            console.log(localStorage.getItem('scoreGame'))
 
-        titre.innerHTML = 'Vous avez perdu !<br>Les couleurs gagantes sont ' + combinaisonCouleursFR.join(', ');
-        popup.classList.add('active');
+            titre.innerHTML = 'Vous avez gagné !';
+            popup.classList.add('active');
+            
+        } else {
+            gameScore = ['User', nbrEssai, localStorage.getItem('laDifficulteChoisie')]
+            localStorage.setItem('scoreGame', gameScore)
+            console.log(localStorage.getItem('scoreGame'))
+    
+            titre.innerHTML = 'Vous avez perdu !<br>Les couleurs gagantes sont ' + combinaisonCouleursFR.join(', ');
+            popup.classList.add('active');
+        }
 
     //-- Sinon si une ligne est rempli ------------
     } else if(numColumn == 4) {
