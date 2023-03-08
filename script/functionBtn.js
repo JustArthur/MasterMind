@@ -3,10 +3,10 @@ function getDifficulte(difficulte) {
     localStorage.setItem('laDifficulteChoisie', difficulte)
 
     if(window.location.pathname == '/' || window.location.pathname == '/index.html') {
-        window.location.href = "pages/jeu.html"
+        window.location.href = "https://justarthur.github.io/MasterMind/pages/jeu.html"
 
     } else {
-        window.location.href = "./jeu.html"
+        window.location.href = "https://justarthur.github.io/MasterMind/pages/jeu.html"
     }
     
 }
@@ -19,11 +19,11 @@ function redirectionPage(page) {
     //-- Redirige selon le bouton cliqué ------------
     switch(page) {
         case 'score':
-            window.location.href = "pages/score.html"
+            window.location.href = "https://justarthur.github.io/MasterMind/pages/score.html"
             break;
 
         case 'retour':           
-            window.location.href = "../index.html"
+            window.location.href = "https://justarthur.github.io/MasterMind/"
             break;
     }
 }

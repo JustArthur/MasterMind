@@ -1,7 +1,7 @@
 //-- S'il n'y a pas de difficulté choisi alors il renvoie à la page index ------------
 let difficulte = localStorage.getItem('laDifficulteChoisie')
 if(difficulte === null || difficulte === undefined || difficulte === '') {
-    window.location.href = "../index.html"
+    window.location.href = "https://justarthur.github.io/MasterMind/"
 }
 
 //-- -- Pour ajouter la couleur à la case suivante ------------
