@@ -94,7 +94,7 @@ function clickBtn(couleur) {
         localStorage.setItem('scoreGame', gameScore)
         console.log(localStorage.getItem('scoreGame'))
 
-        titre.innerHTML = 'Vous avez perdu !<br>Les couleurs gagantes sont ' + combinaisonCouleursFR;
+        titre.innerHTML = 'Vous avez perdu !<br>Les couleurs gagantes sont ' + combinaisonCouleursFR.join(', ');
         popup.classList.add('active');
 
     //-- Sinon si une ligne est rempli ------------
@@ -134,7 +134,7 @@ function clickBtn(couleur) {
                 logLigne.innerHTML = `Aucune couleurs sont au bon endroit`;
             } else if(memeEmplacement.length === 1) {
 
-                logLigne.innerHTML = `Une seul couleur est bien placé`;
+                logLigne.innerHTML = `Une seule couleur est bien placé`;
             } else if(memeEmplacement.length === 2){
 
                 logLigne.innerHTML = `Deux couleurs sont bien placé`;
