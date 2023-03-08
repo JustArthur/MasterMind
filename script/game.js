@@ -66,6 +66,9 @@ for (let i = 0; i < combinaisonCouleurs.length; i++) {
   }
 }
 
+console.log(combinaisonCouleurs);
+console.log(combinaisonCouleursFR);
+
 
 
 
