@@ -23,14 +23,16 @@ let ligneCouleur = [];
 let gameScore = [];
 
 //-- Pour un message de victoire ou de loose ------------
-const popup = document.getElementById('main-popup');
-const titre = document.getElementById('titre');
+const popup = document.getElementById('main-popup'),
+    titre = document.getElementById('titre'),
+    logLigne = document.getElementById('ligne');
 
 
 
 //-- Défini des tableaux pour le random de couleur SANS doublons ------------
 let valeurs = [1, 2, 3, 4];
 let combinaisonCouleurs = [];
+let combinaisonCouleursFR = [];
 
 //-- S'il vois qu'il y a un doublons il continue à faire le for ------------
 for (let i = 0; i < 4; i++) {
@@ -44,16 +46,23 @@ for (let i = 0; i < combinaisonCouleurs.length; i++) {
   switch (combinaisonCouleurs[i]) {
     case 1:
         combinaisonCouleurs[i] = 'blue';
-      break;
+        combinaisonCouleursFR[i] = 'bleu';
+        break;
+
     case 2:
         combinaisonCouleurs[i] = 'red';
-      break;
+        combinaisonCouleursFR[i] = 'rouge';
+        break;
+
     case 3:
         combinaisonCouleurs[i] = 'yellow';
-      break;
+        combinaisonCouleursFR[i] = 'jaune';
+        break;
+
     case 4:
         combinaisonCouleurs[i] = 'green';
-      break;
+        combinaisonCouleursFR[i] = 'vert';
+        break;
   }
 }
 
@@ -85,7 +94,7 @@ function clickBtn(couleur) {
         localStorage.setItem('scoreGame', gameScore)
         console.log(localStorage.getItem('scoreGame'))
 
-        titre.innerHTML = 'Vous avez perdu !';
+        titre.innerHTML = 'Vous avez perdu !<br>Les couleurs gagantes sont ' + combinaisonCouleursFR;
         popup.classList.add('active');
 
     //-- Sinon si une ligne est rempli ------------
@@ -119,8 +128,20 @@ function clickBtn(couleur) {
                     autreEmplacement.push(ligneCouleur[i]);
                 }
             }
-            console.log(`Les couleurs suivantes sont présentes dans le même emplacement : ${memeEmplacement.join(', ')}.`);
-            console.log(`Les couleurs suivantes sont présentes mais pas dans le bon emplacement : ${autreEmplacement.join(', ')}.`);
+
+            if(memeEmplacement.length === 0) {
+
+                logLigne.innerHTML = `Aucune couleurs sont au bon endroit`;
+            } else if(memeEmplacement.length === 1) {
+
+                logLigne.innerHTML = `Une seul couleur est bien placé`;
+            } else if(memeEmplacement.length === 2){
+
+                logLigne.innerHTML = `Deux couleurs sont bien placé`;
+            } else {
+
+                logLigne.innerHTML = `Trois couleurs sont bien placé`
+            }
 
             numColumn = 0;
             ligneCouleur.splice(ligneCouleur);

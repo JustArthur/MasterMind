@@ -16,6 +16,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     gap: 20px;
     background-color: #d3f8ff;
 }
@@ -91,4 +92,17 @@ body {
     bottom: 10px;
     right: 10px;
     color: #b8b8b8;
+}
+
+
+.log {
+    width: 500px;
+    height: 100px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.log .ligne1 {
+    margin: 10px 20px;
 }
