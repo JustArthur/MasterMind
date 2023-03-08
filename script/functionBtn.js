@@ -2,7 +2,7 @@
 function getDifficulte(difficulte) {
     localStorage.setItem('laDifficulteChoisie', difficulte)
     
-    window.location.href = "../pages/jeu.html"    
+    window.location.href = ".https://justarthur.github.io/MasterMind/pages/jeu.html"    
 }
 
 //-- Redirige vers une page ------------
