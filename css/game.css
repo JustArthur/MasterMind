@@ -96,8 +96,8 @@ body {
 
 
 .log {
-    width: 500px;
-    height: 100px;
+    width: 360px;
+    height: 42px;
     background-color: #FFFFFF;
     border-radius: 10px;
     box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.2);
@@ -105,4 +105,5 @@ body {
 
 .log .ligne1 {
     margin: 10px 20px;
+    text-align: center;
 }
