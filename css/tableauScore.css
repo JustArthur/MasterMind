@@ -36,20 +36,22 @@ table {
     height: max-content;
     border: 1px solid black;
     border-radius: 5px;
-    gap: 10px;
+    background-color: #FFFFFF;
 }
 
 table th {
     padding: 10px;
     border: 1px solid black;
-    border-radius: 5px;
 }
 
 table td {
     text-align: center;
     border: 1px solid black;
     padding: 5px 0 5px 0;
-    border-radius: 5px;
+}
+
+table tbody:nth-child(2n+2) {
+    background-color: #d2d2d2;
 }
 
 .copy {
