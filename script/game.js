@@ -116,7 +116,11 @@ for (let i = 0; i < combinaisonCouleurs.length; i++) {
 
 //-- Ajouter un score au tableau ------------
 function addScore(nbrEssai, difficulte, status) {
-    scores.push({ nbrEssai: nbrEssai, difficulte: difficulte, status: status});
+    scores.push({
+        nbrEssai: nbrEssai,
+        difficulte: difficulte,
+        status: status
+    });
     saveScores();
 }
 
