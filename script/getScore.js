@@ -41,7 +41,7 @@ if(scores.length === 0) {
 
         //-- Change la couleur du fond pour qu'il soit plus compréhensible ------------
         if(scores[i].status === 'Gagné') {
-            couleur = 'green';
+            couleur = '#26cc26';
         } else {
             couleur = 'red'
         }

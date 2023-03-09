@@ -16,11 +16,13 @@ body {
     width: 100%;
     display: flex;
     background-color: #d3f8ff;
+    flex-direction: column;
 }
 
 
 /* -- Tableau -- */
 table {
+    position: relative;
     padding: 10px;
     margin: auto;
     width: 90%;
@@ -63,4 +65,12 @@ table td {
     border-radius: 5px;
     cursor: pointer;
     background-color: #0084ff;
+}
+
+h1 {
+    position: absolute;
+    left: 50%;
+    top: 25%;
+    transform: translate(-50%);
+    text-align: center;
 }

@@ -6,8 +6,39 @@ if(difficulte === null || difficulte === undefined || difficulte === '') {
 
 
 
+//-- Sons de win et loose ------------
+var audioWin = new Audio('../sounds/victory-sound-effect.mp3')
+
+//-- Sons de fonds ------------
+var audioBleusaille = new Audio('../sounds/game-bleusaille.mp3'),
+    audioViolence = new Audio('../sounds/game-violence.mp3'),
+    audioUltraViolence = new Audio('../sounds/game-ultraViolence.mp3'),
+    audioCauchemar = new Audio('../sounds/game-cauchemar.mp3'),
+    audioUltraCauchemar = new Audio('../sounds/game-ultraCauchemar.mp3')
 
 
+//-- Joue un son différent celon le niveau de difficulté choisi ------------
+switch(difficulte) {
+    case 'bleusaille':
+        audioBleusaille.play();
+        break;
+
+    case 'violence':
+        audioViolence.play();
+        break;
+
+    case 'ultraViolence':
+        audioUltraViolence.play();
+        break;
+
+    case 'cauchemar':
+        audioCauchemar.play();
+        break;
+
+    case 'ultraCauchemar':
+        audioUltraCauchemar.play();
+        break;
+}
 
 //-- -- Pour ajouter la couleur à la case suivante ------------
 let ordreCouleur = 0;
@@ -41,8 +72,6 @@ let combinaisonCouleurs = [];
 
 //-- Pour la version française des couleurs (uniquement pour rendre le jeu plus beau visuellement ------------
 let combinaisonCouleursFR = [];
-
-
 
 
 
@@ -128,6 +157,9 @@ function clickBtn(couleur) {
             //-- Ajoute un score en tant que gagnant ------------
             addScore(nbrEssai, localStorage.getItem('laDifficulteChoisie'), 'Gagné');
 
+            //-- Joue le son de la victoire ------------
+            audioWin.play()
+
             //-- Affiche la popup de victoire ------------
             titre.innerHTML = 'Vous avez gagné !';
             popup.classList.add('active');
@@ -152,6 +184,9 @@ function clickBtn(couleur) {
 
             //-- Ajoute un score en tant que gagnant ------------
             addScore(nbrEssai, localStorage.getItem('laDifficulteChoisie'), 'Gagné');
+
+            //-- Joue le son de la victoire ------------
+            audioWin.play()
 
             //-- Affiche la popup de victoire ------------
             titre.innerHTML = 'Vous avez gagné !';

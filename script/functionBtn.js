@@ -2,7 +2,7 @@
 function getDifficulte(difficulte) {
     localStorage.setItem('laDifficulteChoisie', difficulte)
     
-    window.location.href = "https://justarthur.github.io/MasterMind/pages/jeu.html"    
+    window.location.href = "../pages/jeu.html"    
 }
 
 //-- Redirige vers une page ------------
@@ -13,11 +13,11 @@ function redirectionPage(page) {
     //-- Redirige selon le bouton cliqué ------------
     switch(page) {
         case 'score':
-            window.location.href = "https://justarthur.github.io/MasterMind/pages/score.html"
+            window.location.href = "../pages/score.html"
             break;
 
         case 'retour':           
-            window.location.href = "https://justarthur.github.io/MasterMind/"
+            window.location.href = "../"
             break;
     }
 }
