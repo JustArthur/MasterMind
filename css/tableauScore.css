@@ -35,3 +35,32 @@ table th {
     border: 1px solid black;
     border-radius: 5px;
 }
+
+table td {
+    text-align: center;
+    border: 1px solid black;
+    padding: 5px 0 5px 0;
+    border-radius: 5px;
+}
+
+.copy {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color: #b8b8b8;
+}
+
+.btn-back {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    width: 200px;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    color: #FFFFFF;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #0084ff;
+}

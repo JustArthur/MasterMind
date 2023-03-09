@@ -1,10 +1,12 @@
 //-- Exécute la fonction au lancement de la page ------------
 window.onload = nbrLigneDifficulte()
 
+
+
 function nbrLigneDifficulte() {
     const plateau = document.getElementById('plateau');
 
-    //-- Récupère dans une variable la difficulté choisi et stocké dans le storage ------------
+    //-- Récupère dans une variable la difficulté choisi et stocké dans le storage précédamment ------------
     let difficulte = localStorage.getItem('laDifficulteChoisie')
 
     //-- Défini le nombre de ligne selon la difficulté choisi ------------
@@ -14,11 +16,11 @@ function nbrLigneDifficulte() {
             break;
 
         case 'violence':
-            nbrLigne = 8;
+            nbrLigne = 7;
             break;
 
         case 'ultraViolence':
-            nbrLigne = 6;
+            nbrLigne = 5;
             break;
 
         case 'cauchemar':

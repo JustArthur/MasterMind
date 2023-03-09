@@ -18,26 +18,30 @@ body {
     background-color: #d3f8ff;
 }
 
-/* Page index */
+h1 {
+  font-size: 90px;
+}
+
+p {
+  font-size: 20px;
+  margin-top: 50px;
+}
+
+a {
+  color: #FFFFFF;
+}
+
+
+
+
+
+/* -- Page index -- */
 .main {
     margin: auto;
     padding: 20px;
     display: flex;
     align-items: center;
     flex-direction: column;
-}
-
-h1 {
-    font-size: 90px;
-}
-
-p {
-    font-size: 20px;
-    margin-top: 50px;
-}
-
-a {
-    color: #FFFFFF;
 }
 
 ul {
@@ -78,7 +82,7 @@ li:nth-child(6) {
 }
 
 .version {
-  margin: 10px 15px;
+    margin: 10px 15px;
 }
 
 

@@ -1,4 +1,4 @@
-//-- Recupére la diffucté celon le btn cliqué et le stoque dans le storage avec localStorage ------------
+//-- Recupére la diffucté celon le btn cliqué et la sauvegarde en local ------------
 function getDifficulte(difficulte) {
     localStorage.setItem('laDifficulteChoisie', difficulte)
     
