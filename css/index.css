@@ -19,16 +19,16 @@ body {
 }
 
 h1 {
-  font-size: 90px;
+    font-size: 90px;
 }
 
 p {
-  font-size: 20px;
-  margin-top: 50px;
+    font-size: 20px;
+    margin-top: 50px;
 }
 
 a {
-  color: #FFFFFF;
+    color: #FFFFFF;
 }
 
 
@@ -82,6 +82,7 @@ li:nth-child(6) {
 }
 
 .version {
+    position: absolute;
     margin: 10px 15px;
 }
 
