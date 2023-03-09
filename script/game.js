@@ -151,32 +151,16 @@ function clickBtn(couleur) {
     numColumn++
 
     //-- S'il n'y a plus de possibilté de joué alors il pert ------------
-    if(ordreCouleur === nbrCase) {
+    if(ordreCouleur === nbrCase && JSON.stringify(combinaisonCouleurs) !== JSON.stringify(ligneCouleur)) {
         //-- Ajoute un essaie qu'il soit bon ou non ------------
         nbrEssai++
- 
-        //-- Si le choix est en ultra-cauchemar il regarde si le choix de l'utilisateur est bon ou non ------------
-        if(localStorage.getItem('laDifficulteChoisie') === 'ultraCauchemar' && JSON.stringify(combinaisonCouleurs) === JSON.stringify(ligneCouleur)) {
+        
+        //-- Ajoute un score en tant que perdu ------------
+        addScore(nbrEssai, localStorage.getItem('laDifficulteChoisie'), 'Perdu');
 
-            //-- Ajoute un score en tant que gagnant ------------
-            addScore(nbrEssai, localStorage.getItem('laDifficulteChoisie'), 'Gagné');
-
-            //-- Joue le son de la victoire ------------
-            audioWin.play()
-
-            //-- Affiche la popup de victoire ------------
-            titre.innerHTML = 'Vous avez gagné !';
-            popup.classList.add('active');
-            
-        } else {
-
-            //-- Ajoute un score en tant que perdu ------------
-            addScore(nbrEssai, localStorage.getItem('laDifficulteChoisie'), 'Perdu');
-
-            //-- Affiche la popup de défaite ------------
-            titre.innerHTML = 'Vous avez perdu !<br>Les couleurs gagantes sont ' + combinaisonCouleursFR.join(', ');
-            popup.classList.add('active');
-        }
+        //-- Affiche la popup de défaite ------------
+        titre.innerHTML = 'Vous avez perdu !<br>Les couleurs gagantes sont ' + combinaisonCouleursFR.join(', ');
+        popup.classList.add('active');
 
     //-- Sinon si une ligne est rempli ------------
     } else if(numColumn == 4) {
