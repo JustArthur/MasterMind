@@ -75,14 +75,14 @@ li:nth-child(6) {
 }
 
 .copy {
-    position: absolute;
+    position: fixed;
     bottom: 10px;
     right: 10px;
     color: #b8b8b8;
 }
 
 .version {
-    position: absolute;
+    position: fixed;
     margin: 10px 15px;
 }
 

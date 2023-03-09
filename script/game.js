@@ -7,36 +7,38 @@ if(difficulte === null || difficulte === undefined || difficulte === '') {
 
 
 //-- Sons de win et loose ------------
-var audioWin = new Audio('../sounds/victory-sound-effect.mp3')
+var audioWin = new Audio('../sounds/win-audio.mp3'),
+    audioLoose = new Audio('../sounds/loose-audio.mp3'),
+    musicAttente = new Audio('../sounds/waiting.mp3')
 
-//-- Sons de fonds ------------
-var audioBleusaille = new Audio('../sounds/game-bleusaille.mp3'),
-    audioViolence = new Audio('../sounds/game-violence.mp3'),
-    audioUltraViolence = new Audio('../sounds/game-ultraViolence.mp3'),
-    audioCauchemar = new Audio('../sounds/game-cauchemar.mp3'),
-    audioUltraCauchemar = new Audio('../sounds/game-ultraCauchemar.mp3')
-
+//-- Met la musique d'attente en boucle pour plus de fun ------------
+musicAttente.loop = true
 
 //-- Joue un son différent celon le niveau de difficulté choisi ------------
 switch(difficulte) {
     case 'bleusaille':
-        audioBleusaille.play();
+        var music = new Audio('../sounds/game-bleusaille.mp3')
+        music.play()
         break;
 
     case 'violence':
-        audioViolence.play();
+        var music = new Audio('../sounds/game-violence.mp3')
+        music.play()
         break;
 
     case 'ultraViolence':
-        audioUltraViolence.play();
+        var music = new Audio('../sounds/game-ultraViolence.mp3')
+        music.play()
         break;
 
     case 'cauchemar':
-        audioCauchemar.play();
+        var music = new Audio('../sounds/game-cauchemar.mp3')
+        music.play()
         break;
 
     case 'ultraCauchemar':
-        audioUltraCauchemar.play();
+        var music = new Audio('../sounds/game-ultraCauchemar.mp3')
+        music.play()
         break;
 }
 
@@ -114,9 +116,10 @@ for (let i = 0; i < combinaisonCouleurs.length; i++) {
 
 
 
-//-- Ajouter un score au tableau ------------
-function addScore(nbrEssai, difficulte, status) {
+//-- Ajouter un score au tableau avec ses paramètres------------
+function addScore(dateHeureNow, nbrEssai, difficulte, status) {
     scores.push({
+        dateHeureNow: dateHeureNow,
         nbrEssai: nbrEssai,
         difficulte: difficulte,
         status: status
@@ -140,6 +143,16 @@ function clickBtn(couleur) {
     const boiteCouleur = document.getElementsByClassName('boite-couleur'),
         nbrCase = boiteCouleur.length;
 
+    //-- Récupère la date et l'heure pour le score ------------
+    let date = new Date()
+    let jour = date.getDate()
+    let mois = date.getMonth()+1
+    let annee = date.getFullYear()
+    let heure = date.getHours()
+    let minutes = date.getMinutes()
+
+    let dateHeureNow = `${jour}/${mois}/${annee} à ${heure}:${minutes}`
+
     //-- Rajoute la couleur selon la couleur choisi ------------
     boiteCouleur[ordreCouleur].style.backgroundColor = couleur;
 
@@ -156,11 +169,19 @@ function clickBtn(couleur) {
         nbrEssai++
         
         //-- Ajoute un score en tant que perdu ------------
-        addScore(nbrEssai, localStorage.getItem('laDifficulteChoisie'), 'Perdu');
+        addScore(dateHeureNow, nbrEssai, localStorage.getItem('laDifficulteChoisie'), 'Perdu');
 
-        //-- Affiche la popup de défaite ------------
+        //-- Affiche la popup de défaite avec le son de la defaite ------------
+        music.pause()
+        audioLoose.play()
+
         titre.innerHTML = 'Vous avez perdu !<br>Les couleurs gagantes sont ' + combinaisonCouleursFR.join(', ');
         popup.classList.add('active');
+
+        //-- Après 10 secondes un son d'attente est mis ------------
+        setTimeout(() => {
+            musicAttente.play()
+        }, 10000)
 
     //-- Sinon si une ligne est rempli ------------
     } else if(numColumn == 4) {
@@ -171,14 +192,20 @@ function clickBtn(couleur) {
         if(JSON.stringify(combinaisonCouleurs) === JSON.stringify(ligneCouleur)) {
 
             //-- Ajoute un score en tant que gagnant ------------
-            addScore(nbrEssai, localStorage.getItem('laDifficulteChoisie'), 'Gagné');
+            addScore(dateHeureNow, nbrEssai, localStorage.getItem('laDifficulteChoisie'), 'Gagné');
 
-            //-- Joue le son de la victoire ------------
+            //-- Joue le son de la victoire avec le son de vistoire ------------
+            music.pause()
             audioWin.play()
 
             //-- Affiche la popup de victoire ------------
             titre.innerHTML = 'Vous avez gagné !';
             popup.classList.add('active');
+
+            //-- Après 10 secondes un son d'attente est mis ------------
+            setTimeout(() => {
+                musicAttente.play()
+            }, 10000)
 
         //-- Sinon il remet à zero ------------
         } else {
