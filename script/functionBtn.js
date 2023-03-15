@@ -8,7 +8,7 @@ function getDifficulte(difficulte) {
 //-- Redirige vers une page ------------
 function redirectionPage(page) {
     //-- Re-défini la variable à vide (au-cas où on voudrais ne pas remettre une difficulté en passant par une autre page en plein jeu) ------------
-    localStorage.setItem('laDifficulteChoisie', '')
+    localStorage.removeItem('laDifficulteChoisie')
 
     //-- Redirige selon le bouton cliqué ------------
     switch(page) {
