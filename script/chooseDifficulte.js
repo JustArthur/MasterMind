@@ -6,7 +6,7 @@ window.onload = nbrLigneDifficulte()
 function nbrLigneDifficulte() {
     const plateau = document.getElementById('plateau');
 
-    //-- Récupère dans une variable la difficulté choisi et stocké dans le storage précédamment ------------
+    //-- Récupère dans une variable la difficulté choisi et stocké et crée précédamment ------------
     let difficulte = localStorage.getItem('laDifficulteChoisie')
 
     //-- Défini le nombre de ligne selon la difficulté choisi ------------
@@ -32,7 +32,7 @@ function nbrLigneDifficulte() {
             break;
     }
 
-    //-- Une boucle qui permet l'ajout des nombres de ligne selon la difficulté ------------
+    //-- Une boucle qui permet l'ajout des nombres de ligne selon la difficulté choisi ------------
     for(var i = 1; i <= nbrLigne; i++) {
         plateau.insertAdjacentHTML('afterbegin', '<div class="ligne-couleur"><div class="boite-couleur"></div><div class="boite-couleur"></div><div class="boite-couleur"></div><div class="boite-couleur"></div></div>')
     }

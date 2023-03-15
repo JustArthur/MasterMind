@@ -16,8 +16,9 @@
 
     <div class="jeu" id="plateau">
 
-        <!-- Ligne du jeu ajouté ici avec JS -->
+        <!-- Les lignes du jeu ajouté ici grâce au fichier chooseDifficulte.js -->
     
+        <!-- Ligne des couleurs pour le joueur -->
         <div class="ligne-couleur user">
             <div class="boite-couleur-user" onclick="clickBtn('blue')"></div>
             <div class="boite-couleur-user" onclick="clickBtn('red')"></div>
@@ -26,14 +27,16 @@
         </div>
     </div>
 
+    <!-- Ligne d'astuce pour dire si des couleurs sont oui ou non bien placé -->
     <div class="log">
         <p class="ligne1" id="ligne">Les indices seront affiché ici</p>
     </div>
 
+    <!-- Popup qui se met quand le joueurs gagne ou perd -->
     <div class="main-popup" id="main-popup">
         <div class="popup">
             <div class="alert">
-                <h1 class="title" id="titre"><!-- Texte ajouter avec JS --></h1>                
+                <h1 class="title" id="titre"><!-- Texte de victoire ou de perdant ajouter avec le fichier game.js --></h1>                
 
                 <ul class="btns">
                     <li class="btn" onclick="getDifficulte(localStorage.getItem('laDifficulteChoisie'))">Rejouer la partie</li>
@@ -43,8 +46,10 @@
         </div>
     </div>
 
+    <!-- Le copyright vu que je l'ai mis en ligne avec GitHub page -->
     <div class="copy">&copy Arthur BOURST 2023</div>
     
+    <!-- Importe le script du jeu, de la difficulté pour le nombre de lignes à mettre et du bouton retour -->
     <script src="../script/chooseDifficulte.js"></script>
     <script src="../script/game.js"></script>
     <script src="../script/functionBtn.js"></script>

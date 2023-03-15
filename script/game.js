@@ -1,20 +1,21 @@
 //-- S'il n'y a pas de difficulté choisi alors il renvoie à la page index ------------
-let difficulte = localStorage.getItem('laDifficulteChoisie')
+let difficulte = localStorage.getItem('laDifficulteChoisie');
+
 if(difficulte === null || difficulte === undefined || difficulte === '') {
     window.location.href = "https://justarthur.github.io/MasterMind/"
 }
 
 
 
-//-- Sons de win et loose ------------
+//-- Définir les sons de victoire, défaite et d'attente ------------
 var audioWin = new Audio('../sounds/win-audio.mp3'),
     audioLoose = new Audio('../sounds/loose-audio.mp3'),
     musicAttente = new Audio('../sounds/waiting.mp3')
 
-//-- Met la musique d'attente en boucle pour plus de fun ------------
+//-- Met la musique d'attente en boucle si le fichier se fini ------------
 musicAttente.loop = true
 
-//-- Joue un son différent celon le niveau de difficulté choisi ------------
+//-- Joue un son différent selon le niveau de difficulté choisi ------------
 switch(difficulte) {
     case 'bleusaille':
         var music = new Audio('../sounds/game-bleusaille.mp3')
@@ -42,7 +43,7 @@ switch(difficulte) {
         break;
 }
 
-//-- -- Pour ajouter la couleur à la case suivante ------------
+//-- Pour ajouter la couleur à la case suivante ------------
 let ordreCouleur = 0;
 
 //-- Pour voir sur quelle colonne on se trouve ------------
@@ -51,40 +52,34 @@ let numColumn = 0;
 //-- Le nombre d'essaie avant de trouver ou perdre pour le tableau des scores ------------
 let nbrEssai = 0;
 
-//-- Tableau des couleurs à trouvé (Reponse permet de mettre els couleurs en français avec le switch) ------------
-let combinaisonCouleursReponse = [];
-
 //-- Tableau des couleurs que l'utilisateurs à saisi sur une ligne ------------
 let ligneCouleur = [];
-
-//-- Points par défault pour une game ------------
-let defaultPoints = 500;
 
 //-- Pour un message de victoire, de loose et les couleurs bonne------------
 const popup = document.getElementById('main-popup'),
     titre = document.getElementById('titre'),
     logLigne = document.getElementById('ligne');
 
-//-- Récupère le tableau des scores ------------
+//-- Récupère le tableau des scores en JSON -----------
 let scores = JSON.parse(localStorage.getItem("scores")) || [];
 
-//-- Défini des tableaux pour le random de couleur SANS doublons ------------
-let valeurs = [1, 2, 3, 4];
+//-- Défini le tableau pour les couleurs à trouvé ------------
 let combinaisonCouleurs = [];
 
-//-- Pour la version française des couleurs (uniquement pour rendre le jeu plus beau visuellement ------------
+//-- Pour la version française des couleurs (uniquement pour rendre le jeu plus beau visuellement lorque nous perdons) ------------
 let combinaisonCouleursFR = [];
 
 
 
 
 
-//-- S'il vois qu'il y a un doublons il continue à faire le for ------------
+//-- S'il vois qu'il y a un doublons il continue à cherche un autre int ------------
 for (let i = 0; i < 4; i++) {
 
-  let index = Math.floor(Math.random() * valeurs.length);
-  combinaisonCouleurs.push(valeurs[index]);
-  valeurs.splice(index, 1);
+
+    let index = Math.floor(Math.random() * 4);
+    combinaisonCouleurs.push(valeurs[index]);
+    valeurs.splice(index, 1);
 }
 
 //-- Change les int en texte pour les couleurs ------------

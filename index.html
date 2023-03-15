@@ -11,15 +11,20 @@
 </head>
 <body>
 
+  <!-- Supprime la difficulté stocké si un utilisateur change le lien sans utilisé les boutons -->
+  <script>window.onload = localStorage.removeItem('laDifficulteChoisie')</script>
+
+  <!-- Version du jeu juste pour le fun -->
   <div class="version">Ver. 1.10.3</div>
 
+    <!-- Page d'indes avec le titre et le choix des difficultés -->
     <div class="main">
         <h1 class="title-game">Mastermind</h1>
         <p class="difficulte">Choix de la difficulté</p>
 
         <ul class="list">
 
-          <!-- Bouton de diffuclté -->
+          <!-- Bouton du choix de la diffuclté -->
             <li class="list-item" onclick="getDifficulte('bleusaille')">Bleusaille</li>
             <li class="list-item" onclick="getDifficulte('violence')">Violence</li>
             <li class="list-item" onclick="getDifficulte('ultraViolence')">Ultra-violence</li>
@@ -37,6 +42,7 @@
             </li>
               <div id="popup-rules" class="popup">
                   <div class="popup__container">
+                    <!-- Petite croix pour fermer la popup des règles -->
                       <a href="#" class="popup__close">
                       <span class="screen-reader">Fermer</span>
                       </a>  
@@ -56,10 +62,13 @@
         </ul>
     </div>
 
+    <!-- Musique de fond pour le menu -->
     <audio src="sounds/doom-menu-theme.mp3" autoplay loop></audio>
 
+    <!-- Le copyright vu que je l'ai mis en ligne avec GitHub page -->
     <div class="copy">&copy Arthur BOURST 2023</div>
     
+    <!-- Script des boutons de difficulté -->
     <script src="script/functionBtn.js"></script>
 </body>
 </html>
