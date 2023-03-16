@@ -7,10 +7,14 @@ if(difficulte === null || difficulte === undefined || difficulte === '') {
 
 
 
+
+
+
+
 //-- Définir les sons de victoire, défaite et d'attente ------------
-var audioWin = new Audio('../sounds/win-audio.mp3'),
-    audioLoose = new Audio('../sounds/loose-audio.mp3'),
-    musicAttente = new Audio('../sounds/waiting.mp3')
+var audioWin = new Audio('../sounds/win-audio.ogg'),
+    audioLoose = new Audio('../sounds/loose-audio.ogg'),
+    musicAttente = new Audio('../sounds/waiting.ogg')
 
 //-- Met la musique d'attente en boucle si le fichier se fini ------------
 musicAttente.loop = true
@@ -18,30 +22,38 @@ musicAttente.loop = true
 //-- Joue un son différent selon le niveau de difficulté choisi ------------
 switch(difficulte) {
     case 'bleusaille':
-        var music = new Audio('../sounds/game-bleusaille.mp3')
+        var music = new Audio('../sounds/game-bleusaille.ogg')
         music.play()
         break;
 
     case 'violence':
-        var music = new Audio('../sounds/game-violence.mp3')
+        var music = new Audio('../sounds/game-violence.ogg')
         music.play()
         break;
 
     case 'ultraViolence':
-        var music = new Audio('../sounds/game-ultraViolence.mp3')
+        var music = new Audio('../sounds/game-ultraViolence.ogg')
         music.play()
         break;
 
     case 'cauchemar':
-        var music = new Audio('../sounds/game-cauchemar.mp3')
+        var music = new Audio('../sounds/game-cauchemar.ogg')
         music.play()
         break;
 
     case 'ultraCauchemar':
-        var music = new Audio('../sounds/game-ultraCauchemar.mp3')
+        var music = new Audio('../sounds/game-ultraCauchemar.ogg')
         music.play()
         break;
 }
+
+//-- Met la musique de fond en boucle ------------
+music.loop = true
+
+//-- Pour un message de victoire, de loose et les couleurs bonne------------
+const popup = document.getElementById('main-popup'),
+    titre = document.getElementById('titre'),
+    logLigne = document.getElementById('ligne');
 
 //-- Pour ajouter la couleur à la case suivante ------------
 let ordreCouleur = 0;
@@ -55,29 +67,26 @@ let nbrEssai = 0;
 //-- Tableau des couleurs que l'utilisateurs à saisi sur une ligne ------------
 let ligneCouleur = [];
 
-//-- Pour un message de victoire, de loose et les couleurs bonne------------
-const popup = document.getElementById('main-popup'),
-    titre = document.getElementById('titre'),
-    logLigne = document.getElementById('ligne');
-
-//-- Récupère le tableau des scores en JSON -----------
-let scores = JSON.parse(localStorage.getItem("scores")) || [];
-
 //-- Défini le tableau pour les couleurs à trouvé ------------
 let combinaisonCouleurs = [];
 
 //-- Pour la version française des couleurs (uniquement pour rendre le jeu plus beau visuellement lorque nous perdons) ------------
 let combinaisonCouleursFR = [];
 
-
+//-- Récupère le tableau des scores en JSON -----------
+let scores = JSON.parse(localStorage.getItem("scores")) || [];
 
 //-- Valeurs des int pour le choix des couleurs plus tard ------------
 let valeurs = [1, 2, 3, 4];
 
+
+
+
+
+
+
 //-- S'il vois qu'il y a un doublons il continue à cherche un autre int ------------
 for (let i = 0; i < 4; i++) {
-
-
     let index = Math.floor(Math.random() * valeurs.length);
     combinaisonCouleurs.push(valeurs[index]);
     valeurs.splice(index, 1);
@@ -117,6 +126,8 @@ for (let i = 0; i < combinaisonCouleurs.length; i++) {
 
 
 
+
+
 //-- Ajoute un score au tableau avec ses paramètres ------------
 function addScore(dateHeureNow, nbrEssai, difficulte, status) {
     //-- Il push dans le tableau score la date et l'heure de la partie, le nombres d'essais  avant de trouver ou perdre, la difficulté choisi, et si la partie est gagné ou perdu ------------
@@ -134,10 +145,16 @@ function addScore(dateHeureNow, nbrEssai, difficulte, status) {
 
 
 
+
+
+
 //-- Enregistrer le tableau de score dans le localStorage en JSON ------------
 function saveScores() {
     localStorage.setItem("scores", JSON.stringify(scores));
 }
+
+
+
 
 
 
@@ -233,6 +250,9 @@ function clickBtn(couleur) {
                     autreEmplacement.push(ligneCouleur[i]);
                 }
             }
+
+            console.log(memeEmplacement)
+            console.log(autreEmplacement)
 
             //-- Défini un texte différent selon le nombre de couleurs au bon endroit ------------
             if(memeEmplacement.length === 0) {
