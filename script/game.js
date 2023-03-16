@@ -71,13 +71,14 @@ let combinaisonCouleursFR = [];
 
 
 
-
+//-- Valeurs des int pour le choix des couleurs plus tard ------------
+let valeurs = [1, 2, 3, 4];
 
 //-- S'il vois qu'il y a un doublons il continue à cherche un autre int ------------
 for (let i = 0; i < 4; i++) {
 
 
-    let index = Math.floor(Math.random() * 4);
+    let index = Math.floor(Math.random() * valeurs.length);
     combinaisonCouleurs.push(valeurs[index]);
     valeurs.splice(index, 1);
 }
