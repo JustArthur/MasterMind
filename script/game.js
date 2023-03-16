@@ -85,21 +85,26 @@ for (let i = 0; i < 4; i++) {
 //-- Change les int en texte pour les couleurs ------------
 for (let i = 0; i < combinaisonCouleurs.length; i++) {
   switch (combinaisonCouleurs[i]) {
+
+    //-- Si c'est = 1 alors il push la couleur bleu dans le tableau des couleurs ------------
     case 1:
         combinaisonCouleurs[i] = 'blue';
         combinaisonCouleursFR[i] = 'bleu';
         break;
 
+    //-- Si c'est = 2 alors il push la couleur rouge dans le tableau des couleurs ------------
     case 2:
         combinaisonCouleurs[i] = 'red';
         combinaisonCouleursFR[i] = 'rouge';
         break;
 
+    //-- Si c'est = 3 alors il push la couleur jaune dans le tableau des couleurs ------------
     case 3:
         combinaisonCouleurs[i] = 'yellow';
         combinaisonCouleursFR[i] = 'jaune';
         break;
 
+    //-- Si c'est = 4 alors il push la couleur vert dans le tableau des couleurs ------------
     case 4:
         combinaisonCouleurs[i] = 'green';
         combinaisonCouleursFR[i] = 'vert';
@@ -111,21 +116,24 @@ for (let i = 0; i < combinaisonCouleurs.length; i++) {
 
 
 
-//-- Ajouter un score au tableau avec ses paramètres------------
+//-- Ajoute un score au tableau avec ses paramètres ------------
 function addScore(dateHeureNow, nbrEssai, difficulte, status) {
+    //-- Il push dans le tableau score la date et l'heure de la partie, le nombres d'essais  avant de trouver ou perdre, la difficulté choisi, et si la partie est gagné ou perdu ------------
     scores.push({
         dateHeureNow: dateHeureNow,
         nbrEssai: nbrEssai,
         difficulte: difficulte,
         status: status
     });
+
+    //-- La fonction saveScore est apelé ------------
     saveScores();
 }
 
 
 
 
-//-- Enregistrer le tableau de score dans le localStorage ------------
+//-- Enregistrer le tableau de score dans le localStorage en JSON ------------
 function saveScores() {
     localStorage.setItem("scores", JSON.stringify(scores));
 }
@@ -133,7 +141,7 @@ function saveScores() {
 
 
 
-//-- Function pour quand une couleur est cliqué il l'a rajoute à la ligne ------------
+//-- Quand un bouton d'une couleur est cliqué ------------
 function clickBtn(couleur) {
     const boiteCouleur = document.getElementsByClassName('boite-couleur'),
         nbrCase = boiteCouleur.length;
@@ -158,7 +166,7 @@ function clickBtn(couleur) {
     ordreCouleur++
     numColumn++
 
-    //-- S'il n'y a plus de possibilté de joué alors il pert ------------
+    //-- S'il n'y a plus de possibilté de jouer alors il pert ------------
     if(ordreCouleur === nbrCase && JSON.stringify(combinaisonCouleurs) !== JSON.stringify(ligneCouleur)) {
         //-- Ajoute un essaie qu'il soit bon ou non ------------
         nbrEssai++
@@ -166,17 +174,20 @@ function clickBtn(couleur) {
         //-- Ajoute un score en tant que perdu ------------
         addScore(dateHeureNow, nbrEssai, localStorage.getItem('laDifficulteChoisie'), 'Perdu');
 
-        //-- Affiche la popup de défaite avec le son de la defaite ------------
+        //-- Met en pause la musique de fond joué ------------
         music.pause()
+
+        //-- Lance le son de defaite ------------
         audioLoose.play()
 
+        //-- Ecrit le texte de défaite ------------
         titre.innerHTML = 'Vous avez perdu !<br>Les couleurs gagantes sont ' + combinaisonCouleursFR.join(', ');
+
+        //-- Affiche la popup ------------
         popup.classList.add('active');
 
-        //-- Après 10 secondes un son d'attente est mis ------------
-        setTimeout(() => {
-            musicAttente.play()
-        }, 10000)
+        //-- Après 10 secondes un son d'attente est lancé ------------
+        setTimeout(() => { musicAttente.play() }, 10000)
 
     //-- Sinon si une ligne est rempli ------------
     } else if(numColumn == 4) {
@@ -236,8 +247,10 @@ function clickBtn(couleur) {
                 logLigne.innerHTML = `Trois couleurs sont bien placé`
             }
 
-            //-- Remet à zero les variable pour continuer le jeu ------------
+            //-- Remet à zero les variables pour continuer le jeu ------------
             numColumn = 0;
+
+            //-- Vide le tableau ------------
             ligneCouleur.splice(ligneCouleur);
         }    
     }
