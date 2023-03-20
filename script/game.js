@@ -251,9 +251,6 @@ function clickBtn(couleur) {
                 }
             }
 
-            console.log(memeEmplacement)
-            console.log(autreEmplacement)
-
             //-- Défini un texte différent selon le nombre de couleurs au bon endroit ------------
             if(memeEmplacement.length === 0) {
                 logLigne.innerHTML = `Aucune couleurs sont au bon endroit`;
