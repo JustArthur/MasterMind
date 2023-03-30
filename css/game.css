@@ -45,6 +45,7 @@ body {
     height: 40px;
     width: 40px;
     border-radius: 50%;
+    background-color: #FFFFFF00;
 }
 
 .user {
@@ -71,6 +72,26 @@ body {
 .user .boite-couleur-user:nth-child(2){ background-color: red; }
 .user .boite-couleur-user:nth-child(3) { background-color: green; }
 .user .boite-couleur-user:nth-child(4) { background-color: yellow; }
+
+.user .boite-couleur-user.disabled {
+    display: none;
+}
+
+.btn-retour {
+    display: none;
+    width: 200px;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    color: #FFFFFF;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #4a4a4a;
+}
+
+.btn-retour.active {
+    display: flex;
+}
 
 .btn-back {
     position: fixed;
@@ -107,3 +128,4 @@ body {
     margin: 10px 20px;
     text-align: center;
 }
+

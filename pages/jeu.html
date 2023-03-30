@@ -14,22 +14,25 @@
     <!-- Le bouton retour -->
     <div class="btn-back" onclick="redirectionPage('retour')">Retour à l'écran de titre</div>
 
+    <h2 id="chronometre">00:00</h2>
     <div class="jeu" id="plateau">
 
         <!-- Les lignes du jeu ajouté ici grâce au fichier chooseDifficulte.js -->
     
         <!-- Ligne des couleurs pour le joueur -->
         <div class="ligne-couleur user">
-            <div class="boite-couleur-user" onclick="clickBtn('blue')"></div>
-            <div class="boite-couleur-user" onclick="clickBtn('red')"></div>
-            <div class="boite-couleur-user" onclick="clickBtn('green')"></div>
-            <div class="boite-couleur-user" onclick="clickBtn('yellow')"></div>
+            <div class="boite-couleur-user" id="bleu" onclick="clickBtn('blue')"></div>
+            <div class="boite-couleur-user" id="rouge" onclick="clickBtn('red')"></div>
+            <div class="boite-couleur-user" id="vert" onclick="clickBtn('green')"></div>
+            <div class="boite-couleur-user" id="jaune" onclick="clickBtn('yellow')"></div>
         </div>
     </div>
 
+    <div id="back-couleur" class="btn-retour" onclick="clickBtn('enlever')">Enlever la couleur</div>
+
     <!-- Ligne d'astuce pour dire si des couleurs sont oui ou non bien placé -->
     <div class="log">
-        <p class="ligne1" id="ligne">Les indices seront affiché ici</p>
+        <p class="ligne1" id="ligne">Les indices seront affichés ici</p>
     </div>
 
     <!-- Popup qui se met quand le joueurs gagne ou perd -->
@@ -53,5 +56,6 @@
     <script src="../script/chooseDifficulte.js"></script>
     <script src="../script/game.js"></script>
     <script src="../script/functionBtn.js"></script>
+    <script src="../script/chronometre.js"></script>
 </body>
 </html>

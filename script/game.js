@@ -73,14 +73,39 @@ let combinaisonCouleurs = [];
 //-- Pour la version française des couleurs (uniquement pour rendre le jeu plus beau visuellement lorque nous perdons) ------------
 let combinaisonCouleursFR = [];
 
-//-- Récupère le tableau des scores en JSON -----------
+//-- Récupère le tableau des scores en JSON ou le défini en vide -----------
 let scores = JSON.parse(localStorage.getItem("scores")) || [];
 
 //-- Valeurs des int pour le choix des couleurs plus tard ------------
 let valeurs = [1, 2, 3, 4];
 
+//-- Chronomètre ------------
+const timer = document.getElementById('chronometre');
+
+let time = 0;
+let interval;
+let tempsTotal = 0;
+
+interval = setInterval(() => {
+    time++;
+    displayTime();
+}, 1000);
 
 
+function displayTime() {
+    let hours = Math.floor(time / 3600);
+    let minutes = Math.floor((time - hours * 3600) / 60);
+    let seconds = time - hours * 3600 - minutes * 60;
+
+    tempsTotal = minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0');
+    timer.textContent = tempsTotal
+}
+
+
+
+
+//-- Points par défault ------------
+let defaultPts = 0;
 
 
 
@@ -157,12 +182,34 @@ function saveScores() {
 
 
 
-
+const boiteCouleur = document.getElementsByClassName('boite-couleur')
 
 //-- Quand un bouton d'une couleur est cliqué ------------
 function clickBtn(couleur) {
-    const boiteCouleur = document.getElementsByClassName('boite-couleur'),
-        nbrCase = boiteCouleur.length;
+
+    const nbrCase = boiteCouleur.length,
+        btnUserBleu = document.getElementById('bleu'),
+        btnUserRouge = document.getElementById('rouge'),
+        btnUserVert = document.getElementById('vert'),
+        btnUserJaune = document.getElementById('jaune');
+
+    // switch(couleur) {
+    //     case 'blue':
+    //         btnUserBleu.classList.add('disabled')
+    //         break;
+
+    //     case 'red':
+    //         btnUserRouge.classList.add('disabled')
+    //         break;
+
+    //     case 'green':
+    //         btnUserVert.classList.add('disabled')
+    //         break;
+
+    //     case 'yellow':
+    //         btnUserJaune.classList.add('disabled')
+    //         break;
+    // }
 
     //-- Récupère la date et l'heure pour le score ------------
     let date = new Date()
@@ -172,6 +219,7 @@ function clickBtn(couleur) {
     let heure = date.getHours()
     let minutes = date.getMinutes()
 
+    //-- Affiche la date et l'heure sous le format 30/03/2023 à 14:00 ------------
     let dateHeureNow = `${jour}/${mois}/${annee} à ${heure}:${minutes}`
 
     //-- Rajoute la couleur selon la couleur choisi ------------
@@ -180,12 +228,29 @@ function clickBtn(couleur) {
     //-- Rajoute la couleur ajouté par l'utilisateur dans un tableau ------------
     ligneCouleur.push(couleur);
 
+    
     //-- Auto-increment pour les lignes ------------
     ordreCouleur++
     numColumn++
+    
+    //-- S'il clique sur le bouton pour enlever la dernière couleur
+    if(couleur === 'enlever' && numColumn != 0) {
+
+        //-- Il enlève 2 au la ligne pour retourner à la case d'avant (car le 'enlever' est aussi dans le tableau)
+        ordreCouleur = ordreCouleur - 2
+
+        //-- Il enlève aussi 2 au nuléro de la colonne
+        numColumn = numColumn - 2
+
+        //-- Il met le fond en transparent
+        boiteCouleur[ordreCouleur].style.backgroundColor = '#FFFFFF00';
+
+        //-- Enlève les 2 dernières valeur du tableau
+        ligneCouleur.splice(-2)
+    }
 
     //-- S'il n'y a plus de possibilté de jouer alors il pert ------------
-    if(ordreCouleur === nbrCase && JSON.stringify(combinaisonCouleurs) !== JSON.stringify(ligneCouleur)) {
+    if(ligneCouleur.length === nbrCase && JSON.stringify(combinaisonCouleurs) !== JSON.stringify(ligneCouleur)) {
         //-- Ajoute un essaie qu'il soit bon ou non ------------
         nbrEssai++
         
@@ -204,16 +269,25 @@ function clickBtn(couleur) {
         //-- Affiche la popup ------------
         popup.classList.add('active');
 
-        //-- Après 10 secondes un son d'attente est lancé ------------
+        //-- Après 10 secondes d'inactivité sur la popup, un son d'attente est lancé ------------
         setTimeout(() => { musicAttente.play() }, 10000)
 
     //-- Sinon si une ligne est rempli ------------
     } else if(numColumn == 4) {
         //-- Ajoute un essaie qu'il soit bon ou non ------------
         nbrEssai++
+        // btnUserBleu.classList.remove('disabled')
+        // btnUserRouge.classList.remove('disabled')
+        // btnUserVert.classList.remove('disabled')
+        // btnUserJaune.classList.remove('disabled')
+        
 
         //-- Il vérifie si les tableaux sont égaux ------------
         if(JSON.stringify(combinaisonCouleurs) === JSON.stringify(ligneCouleur)) {
+
+            if(tempsTotal < '00:10' && nbrEssai === 1) {
+                defaultPts+= 1000
+            }
 
             //-- Ajoute un score en tant que gagnant ------------
             addScore(dateHeureNow, nbrEssai, localStorage.getItem('laDifficulteChoisie'), 'Gagné');
@@ -244,6 +318,7 @@ function clickBtn(couleur) {
                 //-- Si l'un deux est au bon endroit il le rajoute dans le tableau ------------
                 if(combinaisonCouleurs[i] === ligneCouleur[i]) {
                     memeEmplacement.push(combinaisonCouleurs[i]);
+                    defaultPts+= 50
 
                 //-- Si l'un deux est pas au bon endroit il le rajoute dans le tableau ------------
                 } else if (combinaisonCouleurs.indexOf(ligneCouleur[i]) !== -1) {
@@ -271,5 +346,14 @@ function clickBtn(couleur) {
             //-- Vide le tableau ------------
             ligneCouleur.splice(ligneCouleur);
         }    
+    }
+
+    console.log(ligneCouleur)
+
+    //-- Si le tableau est différent de vide il met le bouton (si aucune couleurs est mise ou la ligne est fini) ------------
+    if(ligneCouleur.length !== 0) {
+        document.getElementById('back-couleur').classList.add('active')
+    } else {
+        document.getElementById('back-couleur').classList.remove('active')
     }
 }
