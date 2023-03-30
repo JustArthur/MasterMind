@@ -214,7 +214,7 @@ function clickBtn(couleur) {
         audioLoose.play()
 
         //-- Ecrit le texte de défaite ------------
-        titre.innerHTML = 'Vous avez perdu !<br>Les couleurs gagantes sont ' + combinaisonCouleursFR.join(', ');
+        titre.innerHTML = 'Vous avez perdu !<br>Les couleurs gagnantes sont ' + combinaisonCouleursFR.join(', ');
 
         //-- Affiche la popup ------------
         popup.classList.add('active');
