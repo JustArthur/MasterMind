@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit';
+    font-style: normal;
+    list-style: none;
+    user-select: none;
+    text-decoration: none;
+}
+
+:root {
+  --background-color: #d3f8ff;
+
+  --color-blanc: #FFFFFF;
+  --color-gris-clair: #b8b8b8;
+  --color-noir: #2f0000;
+  --color-vert: #008f1a;
+  --color-jaune: #f6b104;
+  --color-rouge: #ff0000;
+  --color-marron: #9a1500;
+  --color-marron-f: #2f0000;
+  --color-bleu: #0084ff;
+}
+
+body {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    background-color: var(--background-color);
+}
+
+h1 {
+    font-size: 90px;
+}
+
+p {
+    font-size: 20px;
+    margin-top: 50px;
+}
+
+a {
+    color: var(--color-blanc);
+}
+
+
+
+
+
+/* -- Page index -- */
+.main {
+    margin: auto;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.copy {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    color: var(--color-gris-clair);
+}
+
+.btn-back {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    width: 200px;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    color: #FFFFFF;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #0084ff;
+}
+
+ul.list {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+ul.list li.list-item a {
+    margin-left: 20px;
+    padding: 5px 10px;
+    background-color: var(--color-blanc);
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    color: var(--color-bleu);
+}
+
+img {
+    position: absolute;
+    width: 200px;
+    bottom: 0;
+}
