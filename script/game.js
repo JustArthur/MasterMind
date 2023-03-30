@@ -159,7 +159,7 @@ const boiteCouleur = document.getElementsByClassName('boite-couleur')
 //-- Quand un bouton d'une couleur est cliqué ------------
 function clickBtn(couleur) {
 
-    const nbrCase = boiteCouleur.length
+    var nbrCase = boiteCouleur.length
 
     //-- Récupère la date et l'heure pour le score ------------
     let date = new Date()
@@ -200,7 +200,7 @@ function clickBtn(couleur) {
     }
 
     //-- S'il n'y a plus de possibilté de jouer alors il pert ------------
-    if(ligneCouleur.length === nbrCase && JSON.stringify(combinaisonCouleurs) !== JSON.stringify(ligneCouleur)) {
+    if(ordreCouleur === nbrCase && JSON.stringify(combinaisonCouleurs) !== JSON.stringify(ligneCouleur)) {
         //-- Ajoute un essaie qu'il soit bon ou non ------------
         nbrEssai++
         
@@ -226,10 +226,6 @@ function clickBtn(couleur) {
     } else if(numColumn == 4) {
         //-- Ajoute un essaie qu'il soit bon ou non ------------
         nbrEssai++
-        // btnUserBleu.classList.remove('disabled')
-        // btnUserRouge.classList.remove('disabled')
-        // btnUserVert.classList.remove('disabled')
-        // btnUserJaune.classList.remove('disabled')
         
 
         //-- Il vérifie si les tableaux sont égaux ------------
