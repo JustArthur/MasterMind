@@ -79,34 +79,6 @@ let scores = JSON.parse(localStorage.getItem("scores")) || [];
 //-- Valeurs des int pour le choix des couleurs plus tard ------------
 let valeurs = [1, 2, 3, 4];
 
-//-- Chronomètre ------------
-const timer = document.getElementById('chronometre');
-
-let time = 0;
-let interval;
-let tempsTotal = 0;
-
-interval = setInterval(() => {
-    time++;
-    displayTime();
-}, 1000);
-
-
-function displayTime() {
-    let hours = Math.floor(time / 3600);
-    let minutes = Math.floor((time - hours * 3600) / 60);
-    let seconds = time - hours * 3600 - minutes * 60;
-
-    tempsTotal = minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0');
-    timer.textContent = tempsTotal
-}
-
-
-
-
-//-- Points par défault ------------
-let defaultPts = 0;
-
 
 
 
@@ -187,29 +159,7 @@ const boiteCouleur = document.getElementsByClassName('boite-couleur')
 //-- Quand un bouton d'une couleur est cliqué ------------
 function clickBtn(couleur) {
 
-    const nbrCase = boiteCouleur.length,
-        btnUserBleu = document.getElementById('bleu'),
-        btnUserRouge = document.getElementById('rouge'),
-        btnUserVert = document.getElementById('vert'),
-        btnUserJaune = document.getElementById('jaune');
-
-    // switch(couleur) {
-    //     case 'blue':
-    //         btnUserBleu.classList.add('disabled')
-    //         break;
-
-    //     case 'red':
-    //         btnUserRouge.classList.add('disabled')
-    //         break;
-
-    //     case 'green':
-    //         btnUserVert.classList.add('disabled')
-    //         break;
-
-    //     case 'yellow':
-    //         btnUserJaune.classList.add('disabled')
-    //         break;
-    // }
+    const nbrCase = boiteCouleur.length
 
     //-- Récupère la date et l'heure pour le score ------------
     let date = new Date()
@@ -285,10 +235,6 @@ function clickBtn(couleur) {
         //-- Il vérifie si les tableaux sont égaux ------------
         if(JSON.stringify(combinaisonCouleurs) === JSON.stringify(ligneCouleur)) {
 
-            if(tempsTotal < '00:10' && nbrEssai === 1) {
-                defaultPts+= 1000
-            }
-
             //-- Ajoute un score en tant que gagnant ------------
             addScore(dateHeureNow, nbrEssai, localStorage.getItem('laDifficulteChoisie'), 'Gagné');
 
@@ -318,7 +264,6 @@ function clickBtn(couleur) {
                 //-- Si l'un deux est au bon endroit il le rajoute dans le tableau ------------
                 if(combinaisonCouleurs[i] === ligneCouleur[i]) {
                     memeEmplacement.push(combinaisonCouleurs[i]);
-                    defaultPts+= 50
 
                 //-- Si l'un deux est pas au bon endroit il le rajoute dans le tableau ------------
                 } else if (combinaisonCouleurs.indexOf(ligneCouleur[i]) !== -1) {
@@ -347,8 +292,6 @@ function clickBtn(couleur) {
             ligneCouleur.splice(ligneCouleur);
         }    
     }
-
-    console.log(ligneCouleur)
 
     //-- Si le tableau est différent de vide il met le bouton (si aucune couleurs est mise ou la ligne est fini) ------------
     if(ligneCouleur.length !== 0) {
