@@ -1,5 +1,5 @@
 //-- Charge les scores sauvegardé dans le stockage ------------
-let scores = JSON.parse(sessionStorage.getItem("scores")) || [];
+let scores = JSON.parse(localStorage.getItem("scores")) || [];
 
 //-- Pour le style d'une partie gagné ou perdu ------------
 var couleur = '';

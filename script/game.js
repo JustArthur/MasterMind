@@ -74,7 +74,7 @@ let combinaisonCouleurs = [];
 let combinaisonCouleursFR = [];
 
 //-- Récupère le tableau des scores en JSON -----------
-let scores = JSON.parse(sessionStorage.getItem("scores")) || [];
+let scores = JSON.parse(localStorage.getItem("scores")) || [];
 
 //-- Valeurs des int pour le choix des couleurs plus tard ------------
 let valeurs = [1, 2, 3, 4];
@@ -148,9 +148,9 @@ function addScore(dateHeureNow, nbrEssai, difficulte, status) {
 
 
 
-//-- Enregistrer le tableau de score dans le sessionStorage en JSON ------------
+//-- Enregistrer le tableau de score dans le localStorage en JSON ------------
 function saveScores() {
-    sessionStorage.setItem("scores", JSON.stringify(scores));
+    localStorage.setItem("scores", JSON.stringify(scores));
 }
 
 
